@@ -51,8 +51,8 @@ func main() {
 		*repeat = 1
 	}
 
-	if *build == "" {
-		fmt.Println("You must specify a build!")
+	if *build == "" || (*build != "73g" && *build != "73f" && *build != "81" && *build != "99" && *build != "122" && *build != "216" && *build != "ie4july" && *build != "ie4sept") {
+		fmt.Println("You must specify a valid build! Usage:")
 		flag.PrintDefaults()
 		return
 	}
