@@ -38,7 +38,7 @@ func main() {
 	flag.Parse()
 
 	if *ver {
-		fmt.Printf("unikey-mod7 v%s by Daniel Gurney\n", version)
+		fmt.Printf("unikey-chicagokey v%s by Daniel Gurney\n", version)
 		return
 	}
 
