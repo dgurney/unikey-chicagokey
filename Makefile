@@ -1,6 +1,6 @@
 LDFLAGS=-ldflags "-w"
-PROGRAMPATH=github.com/dgurney/unikey-mod7
-PROGRAM=unikey-mod7
+PROGRAMPATH=github.com/dgurney/unikey-chicagokey
+PROGRAM=unikey-chicagokey
 
 install:
 	go install ${LDFLAGS} ${PROGRAMPATH}
@@ -24,14 +24,14 @@ linux:
 	GOOS=linux GOARCH=386 go build ${LDFLAGS} -o build/linux/386/${PROGRAM} ${PROGRAMPATH}
 darwin-universal:
 	mkdir -p build/darwin/universal/
-	lipo -create build/darwin/*/* -output build/darwin/universal/unikey-mod7
+	lipo -create build/darwin/*/* -output build/darwin/universal/unikey-chicagokey
 clean:
 	rm -rf build/
 docker-image:
 	docker build --build-arg UID=$(shell id -u) --build-arg GID=$(shell id -g) -t unikey-package .
 docker-package:
 	mkdir -p build
-	docker run -it --mount type=bind,source=${CURDIR}/build,target=/go/src/unikey-mod7/build unikey-package make -j$(shell nproc) package
+	docker run -it --mount type=bind,source=${CURDIR}/build,target=/go/src/unikey-chicagokey/build unikey-package make -j$(shell nproc) package
 cross: windows darwin freebsd linux openbsd
 package: windows darwin linux
 	cd build; zip -r windows.zip windows && zip -r darwin.zip darwin && zip -r linux.zip linux
