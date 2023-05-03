@@ -26,7 +26,7 @@ func generationBenchmark(amount int) {
 	chicago := generator.ChicagoCredentials{Build: "73f"}
 	started := time.Now()
 	for i := 0; i < amount; i++ {
-		generator.Generate(chicago)
+		chicago.Generate()
 	}
 
 	var ended time.Duration

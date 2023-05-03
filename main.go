@@ -23,7 +23,7 @@ import (
 	"github.com/dgurney/unikey/generator"
 )
 
-const version = "0.4.0"
+const version = "0.5.0"
 
 func init() {
 	rand.Seed(time.Now().UnixNano())
@@ -62,14 +62,14 @@ func main() {
 		started = time.Now()
 	}
 
-	key := generator.ChicagoCredentials{Build: *build}
 	for i := 0; i < *repeat; i++ {
-		k, err := generator.Generate(key)
+		key := generator.ChicagoCredentials{Build: *build}
+		err := key.Generate()
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
-		fmt.Println(k.String())
+		fmt.Println(key.String())
 	}
 
 	if *t {
