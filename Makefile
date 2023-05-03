@@ -6,6 +6,7 @@ install:
 	go install ${LDFLAGS} ${PROGRAMPATH}
 windows:
 	GOOS=windows GOARCH=amd64 go build ${LDFLAGS} -o build/windows/amd64/${PROGRAM}.exe ${PROGRAMPATH}
+	GOOS=windows GOARCH=arm64 go build ${LDFLAGS} -o build/windows/arm64/${PROGRAM}.exe ${PROGRAMPATH}
 	GOOS=windows GOARCH=386 go build ${LDFLAGS} -o build/windows/386/${PROGRAM}.exe ${PROGRAMPATH}
 	GOOS=windows GOARM=7 GOARCH=arm go build ${LDFLAGS} -o build/windows/arm/${PROGRAM}.exe ${PROGRAMPATH}
 darwin:
